@@ -55,11 +55,9 @@
   .memory-card:active {
     transform: scale(0.97);
     transition: transform .4s;
-    background: yellow;
   }
   
   .memory-card.flip {
-    background: yellow;
     transform: rotateY(180deg);
   }
   
