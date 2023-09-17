@@ -1,67 +1,82 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --orange: #F2C14E;
-    --winning-blocks: #2d414b;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    color: var(--orange);
-    font-family: 'Finger Paint';
-}
-h1 {
-    font-size: 54px;
-    text-transform: uppercase;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  background-image: url(bg.jpg);
+
 }
 
-.container {
-    padding: 40px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #37505C;
+
+
+
+
+
+.kominal{
+  margin:50px;
+  position: absolute;
 }
 
-#gameboard {
-    width: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 40px;
+
+.memory-game {
+  width: 650px;
+  height: 600px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
 }
-.box {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--orange);
-    font-size: 120px;
-    border-right: 2px solid;
-    border-bottom: 2px solid;
+
+.memory-card {
+  width: calc(25.4%);
+  height: calc(25.333%);
+  margin: 8px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px rgba(136, 255, 0, 0.3);
+  border-style: ridge;
+  border-color: rgb(255, 255, 9);
+
 }
-.box:nth-child(3n) {
-    border-right: none;
+
+.memory-card:hover {
+  transform: scale(.97);
+  transition: transform .3s;
+
 }
-.box:nth-child(6) ~ .box {
-    border-bottom: none;
-} 
-button {
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: var(--orange);
-    color: #333;
-    border-color: var(--orange);
-    font-size: 18px;
-    transition: 200ms transform;
-    font-weight: 600;
+
+
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .4s;
 }
-button:hover {
-    cursor: pointer;
-    transform: translateY(-2px);
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  position: absolute;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  background-color: rgba(255, 255, 255, 0.952);
+}
+
+
+
+.front-face {
+  transform: rotateY(180deg);
 }
